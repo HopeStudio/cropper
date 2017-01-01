@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width,shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- The above 3 meta tags *must* come first in the head -->
+    <meta name="renderer" content="webkit">
+    <meta name="google" content="notranslate">
+    <title>Hi!</title>
+    <script
+        src="./jquery-3.1.1.min.js"></script>
+    <script src="../dist/cropper.js"></script>
+</head>
+
+<body>
+<div>
+    <img class="jietu" src="./jieping.png" alt="截屏" style="width: 100px">
+</div>
+<script>
+    var obj = $('.jietu').cropper({
+        // outputType: 'file',
+        canvas: {
+            type: 'image/jpeg',
+            quality: 0.7
+        }
+    }, function (file) {
+        console.log(URL.createObjectURL(file));
+        window.open(URL.createObjectURL(file));
+    });
+</script>
+</body>
+
+</html>

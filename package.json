@@ -1,0 +1,61 @@
+{
+    "name": "cropper",
+    "version": "0.0.1",
+    "description": "a cropper jQuery plugin",
+    "main": "dist/cropper.js",
+    "browser": "dist/cropper.js",
+    "scripts": {
+        "lint": "eslint src build test",
+        "lintfix": "eslint src build test --fix",
+        "clean": "rm -rf dist/*",
+        "minify": "cd dist/ && uglifyjs cropper.js -o cropper.min.js --source-map cropper.min.map --compress --mangle --comments '/Copyright/' && cd ..",
+        "prebuild": "rm -rf dist/* && npm run lint",
+        "build": "rollup -c",
+        "postbuild": "node build/jquery-plugin-umd.js && npm run minify",
+        "debug": "rollup -c -w",
+        "pretest": "npm run lint && npm run build",
+        "test": "mocha --reporter spec"
+    },
+    "author": "yangfch3",
+    "license": "MIT",
+    "devDependencies": {
+        "babel-cli": "^6.18.0",
+        "babel-plugin-add-module-exports": "^0.2.1",
+        "babel-preset-es2015": "^6.18.0",
+        "babel-preset-es2015-rollup": "^3.0.0",
+        "chai": "^3.5.0",
+        "coveralls": "^2.11.15",
+        "eslint": "^3.12.2",
+        "eslint-config-standard": "^6.2.1",
+        "eslint-plugin-import": "^2.2.0",
+        "eslint-plugin-promise": "^3.4.0",
+        "eslint-plugin-standard": "^2.0.1",
+        "istanbul": "^0.4.5",
+        "mocha": "^3.2.0",
+        "rollup": "^0.38.1",
+        "rollup-plugin-babel": "^2.7.1",
+        "rollup-plugin-commonjs": "^6.0.1",
+        "rollup-plugin-node-resolve": "^2.0.0",
+        "rollup-plugin-replace": "^1.1.1",
+        "rollup-watch": "^2.5.0",
+        "uglify-js": "^2.7.5",
+        "jquery": "^3.1.1",
+        "zepto": "^1.2.0"
+    },
+    "directories": {
+        "test": "test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yangfch3/cropper.git"
+    },
+    "keywords": [
+        "cropper",
+        "plugin",
+        "jquery"
+    ],
+    "bugs": {
+        "url": "https://github.com/yangfch3/cropper/issues"
+    },
+    "homepage": "https://github.com/yangfch3/cropper#readme"
+}
