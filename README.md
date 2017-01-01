@@ -25,7 +25,7 @@ var cropper = $('.target-img').cropper({
             max : 5,
             step: 0.05,
             init: 1,
-            pos : RANGE_POS_BOTTOM
+            pos : 'bottom'
         },
         /**
         * cropper: 裁剪框参数
@@ -40,7 +40,7 @@ var cropper = $('.target-img').cropper({
         * canvas: 当 outputType 为 'file' 时的图片文件输出格式与压缩率
         */
         canvas    : {
-            type   : JPEG,
+            type   : 'image/jpeg',
             quality: 0.7
         }
     }, function (file) {
