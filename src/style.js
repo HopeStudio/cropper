@@ -15,7 +15,7 @@ body, html {
     top: 0;
     left: 0;
     box-sizing: border-box;
-    border: 2px dashed red;
+    border: 1px dashed red;
     background-color: transparent;
 }
 .cropper-box-client-target {
@@ -54,6 +54,33 @@ body, html {
     cursor: ew-resize;
     right: -24px;
     top: 0;
+}
+.cropper-box-client-n:after, .cropper-box-client-s:after, .cropper-box-client-w:after, .cropper-box-client-e:after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border: 1px solid red;
+}
+.cropper-box-client-n:after {
+    top: 20px;
+    left: 50%;
+    margin-left: -4px;
+}
+.cropper-box-client-s:after {
+    top: 20px;
+    left: 50%;
+    margin-left: -4px;
+}
+.cropper-box-client-w:after {
+    top: 50%;
+    left: 20px;
+    margin-top: -4px;
+}
+.cropper-box-client-e:after {
+    top: 50%;
+    right: 20px;
+    margin-top: -4px;
 }
 .cropper-range input {
     display: inline-block;

@@ -7,12 +7,12 @@ export function rectPhone() {
         $ele0 = this.dom.$ele0,
         $ele1 = this.dom.$ele1;
 
-    let cw = $client.width(),
-        ch = $client.height(),
-        cX = $client.offset().left,
-        cY = $client.offset().top,
-        ele0top = $ele0.offset().top,
-        ele0left = $ele0.offset().left,
+    let cw,
+        ch,
+        cX,
+        cY,
+        ele0top,
+        ele0left,
         curOn;
 
     let _boundTouchMove = function (e) {
@@ -21,24 +21,29 @@ export function rectPhone() {
             e.originalEvent.targetTouches[0].clientX - _this.cache.wrapLeft <= _this.cache.width &&
             e.originalEvent.targetTouches[0].clientY - _this.cache.wrapTop >= 0 &&
             e.originalEvent.targetTouches[0].clientY - _this.cache.wrapTop <= _this.cache.height) {
-            if (curOn === ACTION_NORTH) {
-                $client.css({
-                    top   : e.originalEvent.targetTouches[0].clientY - _this.cache.wrapTop,
-                    height: ch - (e.originalEvent.targetTouches[0].clientY - cY) + _this.options.cropper.antWidth * 2
-                });
-            } else if (curOn === ACTION_SOUTH) {
-                $client.css({
-                    height: e.originalEvent.targetTouches[0].clientY - cY
-                });
-            } else if (curOn === ACTION_WEST) {
-                $client.css({
-                    left : e.originalEvent.targetTouches[0].clientX - _this.cache.wrapLeft,
-                    width: cw - (e.originalEvent.targetTouches[0].clientX - cX) + _this.options.cropper.antWidth * 2
-                });
-            } else if (curOn === ACTION_EAST) {
-                $client.css({
-                    width: e.originalEvent.targetTouches[0].clientX - cX
-                });
+            switch (curOn) {
+                case ACTION_NORTH:
+                    $client.css({
+                        top   : e.originalEvent.targetTouches[0].clientY - _this.cache.wrapTop,
+                        height: ch - (e.originalEvent.targetTouches[0].clientY - cY) + _this.options.cropper.antWidth * 2
+                    });
+                    break;
+                case ACTION_SOUTH:
+                    $client.css({
+                        height: e.originalEvent.targetTouches[0].clientY - cY
+                    });
+                    break;
+                case ACTION_WEST:
+                    $client.css({
+                        left : e.originalEvent.targetTouches[0].clientX - _this.cache.wrapLeft,
+                        width: cw - (e.originalEvent.targetTouches[0].clientX - cX) + _this.options.cropper.antWidth * 2
+                    });
+                    break;
+                case ACTION_EAST:
+                    $client.css({
+                        width: e.originalEvent.targetTouches[0].clientX - cX
+                    });
+                    break;
             }
             // 上层图片跟随运动
             $ele1.css({
@@ -53,6 +58,10 @@ export function rectPhone() {
         curOn = /cropper-box-client-(.)\s/.exec($(e.target)[0].className)[1];
         if (`${ACTION_EAST}${ACTION_WEST}${ACTION_SOUTH}${ACTION_NORTH}`.indexOf(curOn) + 1) {
             e.preventDefault();
+            cw = $client.width();
+            ch = $client.height();
+            cX = $client.offset().left;
+            cY = $client.offset().top;
             ele0top = $ele0.position().top;
             ele0left = $ele0.position().left;
             _this.dom.$wrap.on('touchmove', _boundTouchMove);
@@ -65,6 +74,8 @@ export function rectPhone() {
             ch = $client.height();
             cX = $client.offset().left;
             cY = $client.offset().top;
+            ele0top = $ele0.position().top;
+            ele0left = $ele0.position().left;
         });
     });
 }
@@ -75,12 +86,12 @@ export function rectPC() {
         $ele0 = this.dom.$ele0,
         $ele1 = this.dom.$ele1;
 
-    let cw = $client.width(),
-        ch = $client.height(),
-        cX = $client.offset().left,
-        cY = $client.offset().top,
-        ele0top = $ele0.offset().top,
-        ele0left = $ele0.offset().left,
+    let cw,
+        ch,
+        cX,
+        cY,
+        ele0top,
+        ele0left,
         curOn;
 
     let _boundMove = function (e) {
@@ -90,24 +101,29 @@ export function rectPC() {
             e.clientX - _this.cache.wrapLeft <= _this.cache.width &&
             e.clientY - _this.cache.wrapTop >= 0 &&
             e.clientY - _this.cache.wrapTop <= _this.cache.height) {
-            if (curOn === ACTION_NORTH) {
-                $client.css({
-                    top   : e.clientY - _this.cache.wrapTop,
-                    height: ch - (e.clientY - cY) + _this.options.cropper.antWidth * 2
-                });
-            } else if (curOn === ACTION_SOUTH) {
-                $client.css({
-                    height: e.clientY - cY
-                });
-            } else if (curOn === ACTION_WEST) {
-                $client.css({
-                    left : e.clientX - _this.cache.wrapLeft,
-                    width: cw - (e.clientX - cX) + _this.options.cropper.antWidth * 2
-                });
-            } else if (curOn === ACTION_EAST) {
-                $client.css({
-                    width: e.clientX - cX
-                });
+            switch (curOn) {
+                case ACTION_NORTH:
+                    $client.css({
+                        top   : e.clientY - _this.cache.wrapTop,
+                        height: ch - (e.clientY - cY) + _this.options.cropper.antWidth * 2
+                    });
+                    break;
+                case ACTION_SOUTH:
+                    $client.css({
+                        height: e.clientY - cY
+                    });
+                    break;
+                case ACTION_WEST:
+                    $client.css({
+                        left : e.clientX - _this.cache.wrapLeft,
+                        width: cw - (e.clientX - cX) + _this.options.cropper.antWidth * 2
+                    });
+                    break;
+                case ACTION_EAST:
+                    $client.css({
+                        width: e.clientX - cX
+                    });
+                    break;
             }
             $ele1.css({
                 top : ele0top - $client.position().top - _this.options.cropper.antWidth,
@@ -120,6 +136,10 @@ export function rectPC() {
         curOn = /cropper-box-client-(.)\s/.exec($(e.target)[0].className)[1];
         if ('nswe'.indexOf(curOn) + 1) {
             e.preventDefault();
+            cw = $client.width();
+            ch = $client.height();
+            cX = $client.offset().left;
+            cY = $client.offset().top;
             ele0top = $ele0.position().top;
             ele0left = $ele0.position().left;
             _this.dom.$wrap.on('mousemove', _boundMove);
@@ -132,6 +152,8 @@ export function rectPC() {
             ch = $client.height();
             cX = $client.offset().left;
             cY = $client.offset().top;
+            ele0top = $ele0.position().top;
+            ele0left = $ele0.position().left;
         });
     });
 }

@@ -20,7 +20,9 @@ module.exports = {
     },
     rules: {
         semi: [2, 'always'],
-        indent: [2, 4],
+        indent: [2, 4, {
+            SwitchCase: 1
+        }],
         quotes: [2, 'single'],
         'linebreak-style': [2, 'unix'],
         'no-console': [1]

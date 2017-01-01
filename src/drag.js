@@ -37,7 +37,7 @@ export function dragPhone() {
         if (curOn.indexOf('cropper-box-client-bar') + 1 === 0 && !_this.options.cropper.fixed) {
             $wrap.on('touchmove', touchDrag);
             $(document).one('touchend', function () {
-                $wrap.off('touchmove', touchDrag());
+                $wrap.off('touchmove', touchDrag);
                 ele0top = $ele0.position().top;
                 ele0left = $ele0.position().left;
                 ele1top = $ele1.position().top;

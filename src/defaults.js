@@ -13,7 +13,7 @@ export const DEFAULTS = {
     cropper   : {
         minSpace: 30,
         fixed   : false,
-        antWidth: 2
+        antWidth: 1
     },
     canvas    : {
         type   : JPEG,

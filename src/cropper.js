@@ -4,7 +4,7 @@ import {fn} from './fn';
 export class Cropper {
     constructor(element, options, callback) {
         this.$element = $(element);
-        this.options = $.extend({}, Cropper.DEFAULTS, $.isPlainObject(options) && options);
+        this.options = $.extend(true, {}, Cropper.DEFAULTS, $.isPlainObject(options) && options);
         // 跨函数传输数据
         this.cache = {};
         // 相关 DOM 存储
