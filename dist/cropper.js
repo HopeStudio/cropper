@@ -1,6 +1,6 @@
 /*!
  * cropper v0.0.1
- * Sun Jan 01 2017 22:59:10 GMT+0800 (CST) yangfch3
+ * Wed Jan 04 2017 18:10:46 GMT+0800 (CST) yangfch3
  * Released under the MIT License.
  */
 (function (factory) {

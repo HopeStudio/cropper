@@ -1,6 +1,8 @@
 # cropper
 
-一款简易的 jQuery 图片裁剪、压缩插件
+一款简易的 jQuery 图片裁剪、压缩插件（仍在开发中）。
+
+[Demo](https://hopestudio.github.io/cropper/demo/)
 
 ## 快速上手
 
